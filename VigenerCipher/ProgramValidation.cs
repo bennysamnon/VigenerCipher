@@ -40,11 +40,11 @@ namespace VigenerCipher
                 Console.WriteLine("Enter text:");
         }
 
-        public static bool IsAllAlphabetic(string text)
+        public static bool IsValidText(string text)
         {
             foreach (char c in text)
             {
-                if (!char.IsLetter(c))
+                if (!char.IsLetter(c) && c != ' ')
                     return false;
             }
             return true;

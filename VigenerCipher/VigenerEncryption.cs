@@ -13,7 +13,7 @@ namespace VigenerCipher
 
         private StringBuilder sbEncrypted = new StringBuilder();
 
-        public VigenerEncryption(string plain, string key) 
+        public VigenerEncryption(string plain, string key)
         {
             _plain = plain;
             _key = key;
@@ -22,13 +22,23 @@ namespace VigenerCipher
         public string Encrypt()
         {
             char[,] square = VigenerSquare.GetInstance.GetSquare;
-
-            for (int index = 0; index< _plain.Length; index++)
+            int keyIndex = 0;
+            foreach (char c in _plain)
             {
-                char plainChar = char.ToUpper(_plain[index]);
-                char keyChar = char.ToUpper(_key[index % _key.Length]);
+                if (c != ' ')
+                {
+                    char plainChar = char.ToUpper(c);
+                    char keyChar = char.ToUpper(_key[keyIndex % _key.Length]);
 
-                sbEncrypted.Append(square[plainChar - 'A', keyChar - 'A']);
+                    sbEncrypted.Append(square[plainChar - 'A', keyChar - 'A']);
+
+                    keyIndex++;
+                }
+                else
+                {
+
+                    sbEncrypted.Append(' ');
+                }
             }
 
             return sbEncrypted.ToString();

@@ -15,7 +15,7 @@ while (menuLoop != Menu.Exit)
 
     ProgramHelper.PrintEnterText(menuLoop);
     string text = Console.ReadLine().ToUpper();
-    if (!ProgramHelper.IsAllAlphabetic(text))
+    if (!ProgramHelper.IsValidText(text))
     {
         Console.WriteLine("Text must be alphabetic only.");
         break;
@@ -24,7 +24,7 @@ while (menuLoop != Menu.Exit)
 
     ProgramHelper.PrintKeyText(menuLoop);
     string key = Console.ReadLine().ToUpper();
-    if (!ProgramHelper.IsAllAlphabetic(text))
+    if (!ProgramHelper.IsValidText(text))
     {
         Console.WriteLine("Text must be alphabetic only.");
         break;
